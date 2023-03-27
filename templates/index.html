@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %}Игра «Угадай число»{% endblock title %}
+
+{% block content %}
+    <div class="bg-container text-center d-flex flex-column min-vh-100 align-items-center justify-content-center">
+        <h2>Игра «Угадай число»</h2>
+        <div class='center-container'>
+            <div class='container-fluid bg-white border border-secondary rounded-3 shadow-lg'>
+                <div class='row m-3 border border-secondary rounded-3'>
+                    <div class='ruleSection col-12'>
+                        <p><span>Правила игры: </span><br>Компьютер загадал число из диапазона [<span
+                                id='startNumber'>{{context.startNumber}}</span>, <span id='finishNumber'>{{context.finishNumber}}</span>]. Количество попыток:
+                            <span id='attemptsCount'>{{context.attemptsStart}}</span>. Попробуйте угадать загаданное число.</p>
+                    </div>
+                </div>
+                <div class='row align-items-center m-3 p-2 border border-secondary rounded-3'>
+                    <div class='col-12 m-0 p-0'>
+                        <form>
+                            <div class='row align-items-center m-0 p-0'>
+                                <div class='col-12 col-sm-5 mb-1'>
+                                    {{form.csrf_token}}
+                                    {{form.userGuessNumberInput(min=context.startNumber, max=context.finishNumber, value="", disabled=(not context.isGaming), autofocus=context.isGaming)}}
+                                </div>
+                                <div class='col-12 col-sm-3 mb-1 mt-1'>
+                                    {{form.submit(disabled=(not context.isGaming))}}
+                                </div>
+                                <div class='col-12 col-sm-4 mb-1 mt-1'>
+                                    <a id="startGame" href="{{url_for('index')}}" class="btn btn-primary btn-sm" autofocus>Начать игру</a>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class='p-1 containerInfo row align-items-center m-3 border border-secondary rounded-3'>
+                    <div class='col-12'>
+                        <p id="infoAboutTry" class="m-0 ">{{context.resStr}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

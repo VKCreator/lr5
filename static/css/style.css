@@ -1,0 +1,33 @@
+.bg-container {
+    background-color: rgb(188, 208, 245);
+}
+
+.center-container {
+    max-width: 480px;
+    min-width: 200px;
+}
+
+.ruleSection span {
+    font-weight: bold;
+}
+
+.winnerStyle, .loseStyle {
+    font-weight: 700;
+}
+
+.winnerStyle {
+    color: gray;
+}
+
+#startGame:focus, #submit:focus {
+    font-weight: bold;
+}
+
+input[type="number"]
+{
+    font-size:12px;
+}
+
+.hacker {
+	color: red;
+}
